@@ -4,7 +4,7 @@ Flux Chess
 Copyright 2007-2014 Phokham Nonava <pn@nonava.com>  
 http://fluxchess.com
 
-[![Build Status](https://travis-ci.org/fluxroot/flux.png?branch=2.x)](https://travis-ci.org/fluxroot/flux) [![Coverage Status](https://coveralls.io/repos/fluxroot/flux/badge.png?branch=2.x)](https://coveralls.io/r/fluxroot/flux?branch=2.x)
+[![Build Status](https://travis-ci.org/fluxroot/flux.png?branch=master)](https://travis-ci.org/fluxroot/flux) [![Coverage Status](https://coveralls.io/repos/fluxroot/flux/badge.png?branch=master)](https://coveralls.io/r/fluxroot/flux?branch=master)
 
 
 Introduction

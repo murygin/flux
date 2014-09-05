@@ -9,8 +9,8 @@ apply plugin: 'coveralls'
 description = 'Flux Chess'
 
 group = 'com.fluxchess'
-version = '2.2.2'
-ext.releaseBranch = '2.x'
+version = '3.0.0-alpha'
+ext.releaseBranch = 'master'
 
 if (!project.hasProperty('buildNumber') || !(project.hasProperty('branchName') && branchName == releaseBranch)) {
   // We're probably building on a dev machine or we're building a branch
