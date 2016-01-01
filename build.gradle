@@ -16,24 +16,10 @@ if (!project.hasProperty('buildNumber') || !(project.hasProperty('branchName') &
   // We're probably building on a dev machine or we're building a branch
   ext.buildNumber = 'dev'
 }
+
 if (!project.hasProperty('revisionNumber')) {
   // We're probably building on a dev machine
   ext.revisionNumber = 'dev'
-}
-
-if (!version.contains('-') && !(project.hasProperty('releaseVersion') && releaseVersion == version)) {
-  // Append '-rc' if we're not releasing yet
-  version += '-rc'
-}
-
-if (version.contains('-')) {
-  // Append the buildNumber if we're not releasing
-  version += '.' + buildNumber
-}
-
-if (version.contains('-') && !(project.hasProperty('branchName') && branchName == releaseBranch)) {
-  // Append the revisionNumber if we're not releasing and not on a release branch
-  version += '+' + revisionNumber
 }
 
 afterEvaluate { println "Building ${name} version ${version}" }
@@ -52,6 +38,7 @@ buildscript {
 }
 
 repositories {
+  mavenLocal()
   mavenCentral()
   maven { url "http://maven.fluxchess.com/release" }
 }
@@ -92,10 +79,10 @@ configurations {
 }
 
 dependencies {
-  compile 'com.fluxchess:jcpi:1.4.+'
+  compile 'com.fluxchess:jcpi:1.4.1'
 
   testCompile 'junit:junit:4.+'
-  testCompile 'com.fluxchess:jcpi:1.4.+:tests'
+  testCompile 'com.fluxchess:jcpi:1.4.1:tests'
   testCompile 'org.slf4j:slf4j-api:1.7.+'
   testCompile 'org.slf4j:slf4j-log4j12:1.7.+'
   testCompile 'log4j:log4j:1.2.+'
@@ -266,4 +253,12 @@ idea {
     testSourceDirs += sourceSets.testing.java.srcDirs
     testSourceDirs += sourceSets.testing.resources.srcDirs
   }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:///home/dm/git/maven-repository")
+        }
+    }
 }
